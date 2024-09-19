@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Management</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        /* Header Section */
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        /* Counseling Section */
+        .counseling {
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .counselor {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            display: inline-block;
+            cursor: pointer;
+            width: 200px;
+        }
+
+        .counselor img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .counselor h3 {
+            color: #333;
+            margin: 10px 0;
+        }
+
+        /* Motivation Videos Section */
+        .videos {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .video-card {
+            background-color: #fff;
+            padding: 20px;
+            width: 30%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin: 10px;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .video-card img {
+            width: 100%;
+            height: 150px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .video-card h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .video-card p {
+            color: #666;
+        }
+
+        .video-card:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .video-card, .counselor {
+                width: 80%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Support Management</h1>
+    </header>
+
+    <!-- Counseling Section -->
+    <section class="counseling">
+        <h2>Connect with Our Counselors</h2>
+        <div class="counselor" onclick="connectCounselor('Dr. Anamika')">
+            <img src="https://via.placeholder.com/200x150?text=Dr.+Anamika" alt="Dr. Anamika">
+            <h3>Dr. Anamika</h3>
+            <p>Click to connect</p>
+        </div>
+        <div class="counselor" onclick="connectCounselor('Dr. Himesh')">
+            <img src="https://via.placeholder.com/200x150?text=Dr.+Himesh" alt="Dr. Himesh">
+            <h3>Dr. Himesh</h3>
+            <p>Click to connect</p>
+        </div>
+    </section>
+
+    <!-- Motivation Videos Section -->
+    <section class="videos">
+        <h2>Motivation Videos</h2>
+        <div class="video-card" onclick="watchVideo('Inspirational Video 1')">
+            <img src="https://via.placeholder.com/400x150?text=Motivation+1" alt="Motivation Video 1">
+            <h3>Inspirational Video 1</h3>
+            <p>Watch to get inspired!</p>
+        </div>
+        <div class="video-card" onclick="watchVideo('Motivational Video 2')">
+            <img src="https://via.placeholder.com/400x150?text=Motivation+2" alt="Motivation Video 2">
+            <h3>Motivational Video 2</h3>
+            <p>Boost your motivation!</p>
+        </div>
+        <div class="video-card" onclick="watchVideo('Encouragement Video 3')">
+            <img src="https://via.placeholder.com/400x150?text=Motivation+3" alt="Motivation Video 3">
+            <h3>Encouragement Video 3</h3>
+            <p>Get encouraged now!</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Support Management</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        function connectCounselor(counselorName) {
+            alert('Connecting you to ' + counselorName);
+            // Add logic to initiate a chat or video call
+        }
+
+        function watchVideo(videoTitle) {
+            alert('Opening ' + videoTitle + '...');
+            // Add logic to open video or redirect to video page
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Learning Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        /* Header Section */
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        /* Section Titles */
+        h2 {
+            text-align: center;
+            color: #333;
+            margin: 40px 0;
+        }
+
+        /* Online Classes Section */
+        .online-classes {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 50px;
+            padding: 0 50px;
+        }
+
+        .online-classes button {
+            background-color: #4CAF50;
+            border: none;
+            padding: 15px 30px;
+            color: white;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 150px;
+        }
+
+        .online-classes button:hover {
+            background-color: #45a049;
+        }
+
+        /* Educational Games Section */
+        .games {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 50px;
+            padding: 0 50px;
+        }
+
+        .game-card {
+            background-color: #fff;
+            padding: 20px;
+            width: 23%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .game-card img {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 20px;
+        }
+
+        .game-card h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .game-card p {
+            color: #666;
+        }
+
+        .game-card:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .online-classes, .games {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .game-card, .online-classes button {
+                width: 80%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Web Learning Portal</h1>
+    </header>
+
+    <!-- Online Classes Section -->
+    <section>
+        <h2>Online Classes</h2>
+        <div class="online-classes">
+            <button onclick="attendClass('Class 6')">Class 6</button>
+            <button onclick="attendClass('Class 7')">Class 7</button>
+            <button onclick="attendClass('Class 8')">Class 8</button>
+            <button onclick="attendClass('Class 9')">Class 9</button>
+            <button onclick="attendClass('Class 10')">Class 10</button>
+        </div>
+    </section>
+
+    <!-- Educational Games Section -->
+    <section>
+        <h2>Educational Games</h2>
+        <div class="games">
+            <div class="game-card" onclick="openGame('Graph Game')">
+                <img src="https://via.placeholder.com/100" alt="Graph Game">
+                <h3>Graph Game</h3>
+                <p>Visualize data and learn how graphs work!</p>
+            </div>
+            <div class="game-card" onclick="openGame('Points Clicker')">
+                <img src="https://via.placeholder.com/100" alt="Points Clicker">
+                <h3>Points Clicker</h3>
+                <p>Click and score points to improve your skills.</p>
+            </div>
+            <div class="game-card" onclick="openGame('Star Quiz')">
+                <img src="https://via.placeholder.com/100" alt="Star Quiz">
+                <h3>Star Quiz</h3>
+                <p>Answer questions to earn stars and level up!</p>
+            </div>
+            <div class="game-card" onclick="openGame('Math Puzzle')">
+                <img src="https://via.placeholder.com/100" alt="Math Puzzle">
+                <h3>Math Puzzle</h3>
+                <p>Challenge yourself with fun math puzzles.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Web Learning Portal</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        function attendClass(className) {
+            alert('You are now attending ' + className);
+        }
+
+        function openGame(gameName) {
+            alert('Opening ' + gameName + '...');
+            // Add logic to open the game or redirect to a game page
+        }
+    </script>
+
+</body>
+</html>
