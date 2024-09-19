@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Support Management</title>
+    <title>Finance Problem Management</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
@@ -15,10 +15,11 @@
 
         /* Header Section */
         header {
-            background-color: #4CAF50;
+            background-color: #3498db;
             color: white;
             padding: 20px;
             text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         header h1 {
@@ -26,69 +27,85 @@
             font-size: 2.5rem;
         }
 
-        /* Counseling Section */
-        .counseling {
+        /* Section Titles */
+        h2 {
+            text-align: center;
+            color: #333;
+            margin: 40px 0;
+            font-size: 2rem;
+        }
+
+        /* Finance Management Sections */
+        .finance-management {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 50px;
+            padding: 0 50px;
+        }
+
+        .finance-management div {
+            background-color: #fff;
+            padding: 20px;
+            width: 45%;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .finance-management div:hover {
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .finance-management h3 {
+            margin: 0;
+            color: #333;
+            font-size: 1.5rem;
+        }
+
+        .finance-management p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        /* Scholarships Section */
+        .scholarships {
             text-align: center;
             margin: 50px 0;
         }
 
-        .counselor {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin: 10px;
-            display: inline-block;
-            cursor: pointer;
-            width: 200px;
-        }
-
-        .counselor img {
-            width: 100%;
-            border-radius: 10px;
-        }
-
-        .counselor h3 {
-            color: #333;
-            margin: 10px 0;
-        }
-
-        /* Motivation Videos Section */
-        .videos {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .video-card {
+        .scholarship-card {
             background-color: #fff;
             padding: 20px;
             width: 30%;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             text-align: center;
             margin: 10px;
             display: inline-block;
-            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .video-card img {
-            width: 100%;
-            height: 150px;
-            border-radius: 10px;
-            margin-bottom: 10px;
+        .scholarship-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
-        .video-card h3 {
+        .scholarship-card h3 {
             color: #333;
             margin-bottom: 10px;
+            font-size: 1.25rem;
         }
 
-        .video-card p {
-            color: #666;
+        .scholarship-card a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
         }
 
-        .video-card:hover {
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        .scholarship-card a:hover {
+            text-decoration: underline;
         }
 
         /* Footer */
@@ -101,7 +118,12 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .video-card, .counselor {
+            .finance-management {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .finance-management div, .scholarship-card {
                 width: 80%;
                 margin-bottom: 20px;
             }
@@ -112,61 +134,44 @@
 
     <!-- Header -->
     <header>
-        <h1>Support Management</h1>
+        <h1>Finance Problem Management</h1>
     </header>
 
-    <!-- Counseling Section -->
-    <section class="counseling">
-        <h2>Connect with Our Counselors</h2>
-        <div class="counselor" onclick="connectCounselor('Dr. Anamika')">
-            <img src="https://via.placeholder.com/200x150?text=Dr.+Anamika" alt="Dr. Anamika">
-            <h3>Dr. Anamika</h3>
-            <p>Click to connect</p>
+    <!-- Finance Management Section -->
+    <section class="finance-management">
+        <!-- Administrator Section -->
+        <div>
+            <h3>Administrator</h3>
+            <p>Administrators can allocate funds according to school decisions. Manage and review financial requests and approvals with ease.</p>
         </div>
-        <div class="counselor" onclick="connectCounselor('Dr. Himesh')">
-            <img src="https://via.placeholder.com/200x150?text=Dr.+Himesh" alt="Dr. Himesh">
-            <h3>Dr. Himesh</h3>
-            <p>Click to connect</p>
+        <!-- NGO Section -->
+        <div>
+            <h3>NGO Scholarships</h3>
+            <p>Apply for scholarships provided by our NGO. Check out the available scholarships and apply directly through the links below.</p>
         </div>
     </section>
 
-    <!-- Motivation Videos Section -->
-    <section class="videos">
-        <h2>Motivation Videos</h2>
-        <div class="video-card" onclick="watchVideo('Inspirational Video 1')">
-            <img src="https://via.placeholder.com/400x150?text=Motivation+1" alt="Motivation Video 1">
-            <h3>Inspirational Video 1</h3>
-            <p>Watch to get inspired!</p>
+    <!-- Scholarships Section -->
+    <section class="scholarships">
+        <h2>Available Scholarships</h2>
+        <div class="scholarship-card">
+            <h3>Ambani Scholarship</h3>
+            <a href="https://example.com/ambani-scholarship" target="_blank">Apply Now</a>
         </div>
-        <div class="video-card" onclick="watchVideo('Motivational Video 2')">
-            <img src="https://via.placeholder.com/400x150?text=Motivation+2" alt="Motivation Video 2">
-            <h3>Motivational Video 2</h3>
-            <p>Boost your motivation!</p>
+        <div class="scholarship-card">
+            <h3>Tata Scholarship</h3>
+            <a href="https://example.com/tata-scholarship" target="_blank">Apply Now</a>
         </div>
-        <div class="video-card" onclick="watchVideo('Encouragement Video 3')">
-            <img src="https://via.placeholder.com/400x150?text=Motivation+3" alt="Motivation Video 3">
-            <h3>Encouragement Video 3</h3>
-            <p>Get encouraged now!</p>
+        <div class="scholarship-card">
+            <h3>Birla Scholarship</h3>
+            <a href="https://example.com/birla-scholarship" target="_blank">Apply Now</a>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Support Management</p>
+        <p>&copy; 2024 Finance Problem Management</p>
     </footer>
-
-    <!-- JavaScript -->
-    <script>
-        function connectCounselor(counselorName) {
-            alert('Connecting you to ' + counselorName);
-            // Add logic to initiate a chat or video call
-        }
-
-        function watchVideo(videoTitle) {
-            alert('Opening ' + videoTitle + '...');
-            // Add logic to open video or redirect to video page
-        }
-    </script>
 
 </body>
 </html>
