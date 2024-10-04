@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parental Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js for graphs -->
+</head>
+<body>
+    <header>
+        <h1>Welcome to Parental Portal</h1>
+    </header>
+
+    <div class="container">
+        <!-- Container 1: Live Interactive Sessions -->
+        <div class="box" id="interactive-session">
+            <h2>Live Interactive Sessions</h2>
+            <p>Join live sessions with teachers and administrators.</p>
+            <button onclick="startLiveSession()">Start Session</button>
+        </div>
+
+        <!-- Container 2: Student Grades and Performance Data -->
+        <div class="box" id="student-data">
+            <h2>Student Performance</h2>
+            <canvas id="gradesChart"></canvas>
+        </div>
+
+        <!-- Container 3: Overall Student Performance -->
+        <div class="box" id="overall-performance">
+            <h2>Overall Performance</h2>
+            <canvas id="overallPerformanceChart"></canvas>
+        </div>
+
+        <!-- Container 4: AI-Driven Insights -->
+        <div class="box" id="ai-insights">
+            <h2>Focus Areas for Improvement</h2>
+            <canvas id="improvementAreasChart"></canvas>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Problem Management</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        /* Header Section */
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        /* Section Titles */
+        h2 {
+            text-align: center;
+            color: #333;
+            margin: 40px 0;
+            font-size: 2rem;
+        }
+
+        /* Finance Management Sections */
+        .finance-management {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 50px;
+            padding: 0 50px;
+        }
+
+        .finance-management div {
+            background-color: #fff;
+            padding: 20px;
+            width: 45%;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .finance-management div:hover {
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .finance-management h3 {
+            margin: 0;
+            color: #333;
+            font-size: 1.5rem;
+        }
+
+        .finance-management p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        /* Scholarships Section */
+        .scholarships {
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .scholarship-card {
+            background-color: #fff;
+            padding: 20px;
+            width: 30%;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin: 10px;
+            display: inline-block;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .scholarship-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .scholarship-card h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.25rem;
+        }
+
+        .scholarship-card .apply-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .scholarship-card .apply-btn:hover {
+            background-color: #45a049;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .finance-management {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .finance-management div, .scholarship-card {
+                width: 80%;
+                margin-bottom: 20px;
+            }
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            width: 100%;
+            background-color: #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            height: 10px;
+        }
+
+        .progress-bar-fill {
+            width: 100%; /* All progress bars filled */
+            background-color: blue;
+            height: 100%;
+            border-radius: 5px;
+            transition: width 0.3s ease;
+        }
+
+        /* Status Display for Approval */
+        .status {
+            margin-top: 5px;
+            font-weight: bold;
+        }
+
+        /* Company List Section */
+        .company-list {
+            background-color: #fff;
+            padding: 20px;
+            width: 80%;
+            margin: 0 auto 50px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .company-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .company-list ul li {
+            font-size: 1rem;
+            color: #333;
+            margin: 10px 0;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Finance Problem Management</h1>
+    </header>
+
+    <!-- Finance Management Section -->
+    <section class="finance-management">
+        <!-- Administrator Section -->
+        <div>
+            <h3>Administrator</h3>
+            <button style="background-color: red; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">Pending</button>
+            <button style="background-color: green; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">Approved</button>
+        </div>
+        <!-- NGO Section -->
+        <div>
+            <h3>NGO Scholarships</h3>
+        </div>
+    </section>
+
+    <!-- Company List Section -->
+    <section class="company-list">
+        <h2>Connected Companies</h2>
+        <ul>
+            <li>Reliance Industries</li>
+            <li>Tata Group</li>
+            <li>Infosys</li>
+            <li>Wipro</li>
+            <li>Mahindra & Mahindra</li>
+            <li>Aditya Birla Group</li>
+            <li>HCL Technologies</li>
+            <li>Larsen & Toubro</li>
+            <li>Bajaj Group</li>
+            <li>Godrej Group</li>
+        </ul>
+    </section>
+
+    <!-- Scholarships Section -->
+    <section class="scholarships">
+        <h2>Available Scholarships</h2>
+        <div class="scholarship-card" id="Ambani">
+            <h3>Ambani Scholarship</h3>
+            <div class="progress-bar">
+                <div class="progress-bar-fill"></div>
+            </div>
+            <p class="status" id="Ambani-status">Pending Approval</p>
+            <button class="apply-btn" onclick="window.location.href='https://das.reliancefoundation.org/'">Apply Now</button>
+        </div>
+        <div class="scholarship-card" id="Tata">
+            <h3>Tata Scholarship</h3>
+            <div class="progress-bar">
+                <div class="progress-bar-fill"></div>
+            </div>
+            <p class="status" id="Tata-status">Pending Approval</p>
+            <button class="apply-btn" onclick="window.location.href='https://www.tatatrusts.org/our-work/individual-grants-programme/education-grants'">Apply Now</button>
+        </div>
+        <div class="scholarship-card" id="Birla">
+            <h3>Birla Scholarship</h3>
+            <div class="progress-bar">
+                <div class="progress-bar-fill"></div>
+            </div>
+            <p class="status" id="Birla-status">Pending Approval</p>
+            <button class="apply-btn" onclick="window.location.href='https://www.adityabirlascholars.net/the-scholarship/'">Apply Now</button>
+        </div>
+        <div class="scholarship-card" id="Infosys">
+            <h3>Infosys Scholarship</h3>
+            <div class="progress-bar">
+                <div class="progress-bar-fill"></div>
+            </div>
+            <p class="status" id="Infosys-status">Pending Approval</p>
+            <button class="apply-btn" onclick="window.location.href='https://www.infosys.org/infosys-foundation.html    '">Apply Now</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Finance Problem Management</p>
+    </footer>
+
+</body>
+</html>

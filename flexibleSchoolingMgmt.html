@@ -119,18 +119,18 @@
 
     <!-- Online Classes Section -->
     <section>
-        <h2>Online Classes</h2>
+        <h2>EVENING CLASSES</h2>
         <div class="time-buttons">
-            <button>7 to 8 PM</button>
-            <button>10 to 11 PM</button>
-            <button>12 to 1 PM</button>
-            <button>4 to 5 PM</button>
+            <button onclick="attendClass('https://zoom.us/j/1234567890')">7 to 8 PM</button>
+            <button onclick="attendClass('https://zoom.us/j/0987654321')">10 to 11 PM</button>
+            <button onclick="attendClass('https://zoom.us/j/1122334455')">12 to 1 PM</button>
+            <button onclick="attendClass('https://zoom.us/j/5566778899')">4 to 5 PM</button>
         </div>
     </section>
 
     <!-- Student Progress Section -->
     <section>
-        <h2>Student Progress</h2>
+        <h2>STUDENT PROGRESS</h2>
         <div class="progress-section">
             <!-- Bar Graph -->
             <div class="bar-graph">
@@ -152,9 +152,14 @@
         <p>&copy; 2024 Flexible School Management</p>
     </footer>
 
-    <!-- JavaScript for Graphs -->
+    <!-- JavaScript for Graphs and Zoom Links -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
+        // Function to open Zoom link
+        function attendClass(zoomLink) {
+            window.open(zoomLink, '_blank');
+        }
+
         // Bar Graph (Progress in Subjects)
         const barCtx = document.getElementById('barChart').getContext('2d');
         const barChart = new Chart(barCtx, {

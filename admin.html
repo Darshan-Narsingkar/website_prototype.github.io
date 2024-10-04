@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrator Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js for graphs -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        header {
+            background-color: #3498db;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .box {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .button-approve, .button-reject {
+            background-color: green;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        .button-reject {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Administrator Dashboard</h1>
+    </header>
+
+    <div class="container">
+
+        <!-- New Section: Student Data Upload -->
+        <div class="box" id="data-upload">
+            <h2>Upload Student Data</h2>
+            <form id="dataUploadForm" enctype="multipart/form-data">
+                <label for="fileUpload">Upload Class Data (CSV):</label>
+                <input type="file" id="fileUpload" name="fileUpload" accept=".csv" required>
+                <button type="submit">Upload Data</button>
+            </form>
+            <p id="uploadStatus"></p>
+        </div>
+
+        <!-- New Section: Student Dropout Requests -->
+        <div class="box" id="dropout-requests">
+            <h2>Dropout Requests</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Student ID</th>
+                        <th>Reason for Dropout</th>
+                        <th>Contact Information</th>
+                        <th>Support Needed</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="requestTableBody">
+                    <!-- Sample Row (this should be dynamically populated based on form submissions) -->
+                    <tr>
+                        <td>John Doe</td>
+                        <td>12345</td>
+                        <td>Financial issues</td>
+                        <td>john@example.com</td>
+                        <td>Yes</td>
+                        <td>
+                            <button class="button-approve" onclick="approveRequest('12345')">Approve</button>
+                            <button class="button-reject" onclick="rejectRequest('12345')">Reject</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Container 2: Student Grades and Performance Data -->
+        <div class="box" id="student-data">
+            <h2>Student Performance</h2>
+            <canvas id="gradesChart"></canvas>
+        </div>
+
+        <!-- Container 3: Overall Student Performance -->
+        <div class="box" id="overall-performance">
+            <h2>Overall Performance</h2>
+            <canvas id="overallPerformanceChart"></canvas>
+        </div>
+
+        <!-- Container 4: AI-Driven Insights -->
+        <div class="box" id="ai-insights">
+            <h2>Focus Areas for Improvement</h2>
+            <canvas id="improvementAreasChart"></canvas>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Example logic for file upload
+        document.getElementById('dataUploadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const fileInput = document.getElementById('fileUpload');
+            const file = fileInput.files[0];
+
+            if (file) {
+                // Process file for data upload
+                alert('File uploaded successfully');
+                document.getElementById('uploadStatus').textContent = `File ${file.name} uploaded. Processing data...`;
+                // Here you would add logic to process the uploaded CSV data for predictions
+            } else {
+                alert('Please select a file first.');
+            }
+        });
+
+        // Approve and Reject Requests Logic
+        function approveRequest(studentId) {
+            alert(`Request for Student ID ${studentId} has been approved.`);
+            // Remove the row from the table or update its status
+        }
+
+        function rejectRequest(studentId) {
+            alert(`Request for Student ID ${studentId} has been rejected.`);
+            // Remove the row from the table or update its status
+        }
+
+        // Placeholder for chart.js charts
+        const ctxGrades = document.getElementById('gradesChart').getContext('2d');
+        const gradesChart = new Chart(ctxGrades, {
+            type: 'bar',
+            data: {
+                labels: ['Math', 'Science', 'History'],
+                datasets: [{
+                    label: 'Student Grades',
+                    data: [85, 90, 78],
+                    backgroundColor: ['#3498db', '#2ecc71', '#e74c3c']
+                }]
+            }
+        });
+
+        const ctxOverall = document.getElementById('overallPerformanceChart').getContext('2d');
+        const overallPerformanceChart = new Chart(ctxOverall, {
+            type: 'line',
+            data: {
+                labels: ['Term 1', 'Term 2', 'Term 3'],
+                datasets: [{
+                    label: 'Overall Performance',
+                    data: [78, 85, 92],
+                    borderColor: '#3498db',
+                    fill: false
+                }]
+            }
+        });
+
+        const ctxImprovement = document.getElementById('improvementAreasChart').getContext('2d');
+        const improvementAreasChart = new Chart(ctxImprovement, {
+            type: 'pie',
+            data: {
+                labels: ['Attendance', 'Behavior', 'Grades'],
+                datasets: [{
+                    label: 'Improvement Areas',
+                    data: [40, 25, 35],
+                    backgroundColor: ['#f1c40f', '#e67e22', '#e74c3c']
+                }]
+            }
+        });
+    </script>
+</body>
+</html>

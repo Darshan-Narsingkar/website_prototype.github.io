@@ -10,7 +10,7 @@
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
+            background-color: #f4f4f9;  
         }
 
         /* Header Section */
@@ -39,18 +39,34 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin: 10px;
             display: inline-block;
-            cursor: pointer;
             width: 200px;
+            text-align: center;
         }
 
         .counselor img {
-            width: 100%;
-            border-radius: 10px;
+            width: 150px; /* Set fixed width */
+            height: 150px; /* Set fixed height */
+            object-fit: cover; /* Ensure image fills the area */
+            border-radius: 50%; /* Make the images circular */
+            margin-bottom: 10px;
         }
 
         .counselor h3 {
             color: #333;
             margin: 10px 0;
+        }
+
+        .counselor button {
+            background-color: rgb(0, 145, 255);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .counselor button:hover {
+            background-color: #45a049;
         }
 
         /* Motivation Videos Section */
@@ -118,35 +134,40 @@
     <!-- Counseling Section -->
     <section class="counseling">
         <h2>Connect with Our Counselors</h2>
-        <div class="counselor" onclick="connectCounselor('Dr. Anamika')">
-            <img src="https://via.placeholder.com/200x150?text=Dr.+Anamika" alt="Dr. Anamika">
-            <h3>Dr. Anamika</h3>
-            <p>Click to connect</p>
+        <div class="counselor">
+            <img src="images/darshan.jpg" alt="Dr. Anamika">
+            <h3>Dr. Darshan Singh</h3>
+            <button onclick="connectCounselor('https://www.linkedin.com/search/results/all/?fetchDeterministicClustersOnly=true&heroEntityKey=urn%3Ali%3Afsd_profile%3AACoAAD-Qu4EBwwzxdtvgVgBOLctIXxRcXFv2aQ8&keywords=darshan%20narsingkar&origin=RICH_QUERY_SUGGESTION&position=1&searchId=3608eef2-0cc5-434f-acaa-cc2f0228b742&sid=%3B6h&spellCorrectionEnabled=false')">Connect</button>
         </div>
-        <div class="counselor" onclick="connectCounselor('Dr. Himesh')">
-            <img src="https://via.placeholder.com/200x150?text=Dr.+Himesh" alt="Dr. Himesh">
-            <h3>Dr. Himesh</h3>
-            <p>Click to connect</p>
+        <div class="counselor">
+            <img src="images/bhavik.jpg" alt="Dr. Himesh">
+            <h3>Dr. Bhavik Sharma</h3>
+            <button onclick="connectCounselor('https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile')">Connect</button>
         </div>
     </section>
 
     <!-- Motivation Videos Section -->
     <section class="videos">
-        <h2>Motivation Videos</h2>
-        <div class="video-card" onclick="watchVideo('Inspirational Video 1')">
-            <img src="https://via.placeholder.com/400x150?text=Motivation+1" alt="Motivation Video 1">
-            <h3>Inspirational Video 1</h3>
+        <h2>MOTIVATION VIDEOS </VIDeo></h2>
+        <div class="video-card" onclick="watchVideo('https://youtu.be/Bi-7pho5XB8?si=6x0l192c43NzB6TZ')">
+            <img src="images/55download.jpeg" alt="Motivation Video 1">
+            <h3>Inspirational</h3>
             <p>Watch to get inspired!</p>
         </div>
-        <div class="video-card" onclick="watchVideo('Motivational Video 2')">
-            <img src="https://via.placeholder.com/400x150?text=Motivation+2" alt="Motivation Video 2">
-            <h3>Motivational Video 2</h3>
+        <div class="video-card" onclick="watchVideo('https://youtu.be/Zf2RzRgD3t8?si=Zei7j0ki16M47mEa')">
+            <img src="images/66download.jpeg" alt="Motivation Video 2">
+            <h3>Motivational</h3>
             <p>Boost your motivation!</p>
         </div>
-        <div class="video-card" onclick="watchVideo('Encouragement Video 3')">
-            <img src="https://via.placeholder.com/400x150?text=Motivation+3" alt="Motivation Video 3">
-            <h3>Encouragement Video 3</h3>
+        <div class="video-card" onclick="watchVideo('https://youtu.be/wnHW6o8WMas?si=SH-08kcQ95aufz6Z')">
+            <img src="images/77download.jpeg" alt="Motivation Video 3">
+            <h3>Encouragement </h3>
             <p>Get encouraged now!</p>
+        </div>
+        <div class="video-card" onclick="watchVideo('https://youtu.be/RgUwiiOJNEI?si=KmetqiuTeoOYoZ6s')">
+            <img src="images/88download.jpeg" alt="Motivation Video 4">
+            <h3>Empowerment </h3>
+            <p>Feel empowered!</p>
         </div>
     </section>
 
@@ -157,14 +178,12 @@
 
     <!-- JavaScript -->
     <script>
-        function connectCounselor(counselorName) {
-            alert('Connecting you to ' + counselorName);
-            // Add logic to initiate a chat or video call
+        function connectCounselor(link) {
+            window.open(link, '_blank');
         }
 
-        function watchVideo(videoTitle) {
-            alert('Opening ' + videoTitle + '...');
-            // Add logic to open video or redirect to video page
+        function watchVideo(videoLink) {
+            window.open(videoLink, '_blank');
         }
     </script>
 

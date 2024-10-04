@@ -42,7 +42,7 @@
         }
 
         .online-classes button {
-            background-color: #4CAF50;
+            background-color: #721dda;
             border: none;
             padding: 15px 30px;
             color: white;
@@ -124,39 +124,36 @@
 
     <!-- Online Classes Section -->
     <section>
-        <h2>Online Classes</h2>
+        <h2>ONLINE CLASSES</h2>
         <div class="online-classes">
-            <button onclick="attendClass('Class 6')">Class 6</button>
-            <button onclick="attendClass('Class 7')">Class 7</button>
-            <button onclick="attendClass('Class 8')">Class 8</button>
-            <button onclick="attendClass('Class 9')">Class 9</button>
-            <button onclick="attendClass('Class 10')">Class 10</button>
+            <button onclick="attendClass('https://zoom.us/class6')">Class 6</button>
+            <button onclick="attendClass('https://zoom.us/class7')">Class 7</button>
+            <button onclick="attendClass('https://zoom.us/class8')">Class 8</button>
+            <button onclick="attendClass('https://zoom.us/class9')">Class 9</button>
+            <button onclick="attendClass('https://zoom.us/class10')">Class 10</button>
         </div>
     </section>
 
     <!-- Educational Games Section -->
     <section>
-        <h2>Educational Games</h2>
+        <h2>EDUCATIONAL GAMES</h2>
         <div class="games">
             <div class="game-card" onclick="openGame('Graph Game')">
-                <img src="https://via.placeholder.com/100" alt="Graph Game">
+                <img src="images/11images.jpeg" alt="Graph Game">
                 <h3>Graph Game</h3>
-                <p>Visualize data and learn how graphs work!</p>
+                
             </div>
             <div class="game-card" onclick="openGame('Points Clicker')">
-                <img src="https://via.placeholder.com/100" alt="Points Clicker">
+                <img src="images/22images.jpeg" alt="Points Clicker">
                 <h3>Points Clicker</h3>
-                <p>Click and score points to improve your skills.</p>
             </div>
             <div class="game-card" onclick="openGame('Star Quiz')">
-                <img src="https://via.placeholder.com/100" alt="Star Quiz">
+                <img src="images/33images.jpeg" alt="Star Quiz">
                 <h3>Star Quiz</h3>
-                <p>Answer questions to earn stars and level up!</p>
             </div>
             <div class="game-card" onclick="openGame('Math Puzzle')">
-                <img src="https://via.placeholder.com/100" alt="Math Puzzle">
+                <img src="images/44images.jpeg" alt="Math Puzzle">
                 <h3>Math Puzzle</h3>
-                <p>Challenge yourself with fun math puzzles.</p>
             </div>
         </div>
     </section>
@@ -168,8 +165,8 @@
 
     <!-- JavaScript -->
     <script>
-        function attendClass(className) {
-            alert('You are now attending ' + className);
+        function attendClass(zoomLink) {
+            window.open(zoomLink, '_blank');
         }
 
         function openGame(gameName) {

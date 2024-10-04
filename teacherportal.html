@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teacher Dashboard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <title>Teacher's Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js for graphs -->
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -13,13 +14,11 @@
             background-color: #f4f4f9;
         }
 
-        /* Header Section */
         header {
             background-color: #3498db;
             color: white;
             padding: 20px;
             text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         header h1 {
@@ -27,165 +26,390 @@
             font-size: 2.5rem;
         }
 
-        /* Section Titles */
-        h2 {
-            text-align: center;
-            color: #333;
-            margin: 40px 0;
-            font-size: 2rem;
+        .container {
+            padding: 20px;
         }
 
-        /* Dropout Management Section */
-        .dropout-management {
-            margin: 0 50px;
+        .box {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .dropout-management table {
+        table {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 50px;
+            margin-top: 20px;
         }
 
-        .dropout-management table th,
-        .dropout-management table td {
-            padding: 15px;
-            text-align: center;
-            border-bottom: 1px solid #ddd;
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
         }
 
-        .dropout-management table th {
+        th {
             background-color: #3498db;
             color: white;
         }
 
-        .dropout-management table tr:hover {
-            background-color: #f1f1f1;
-        }
-
-        /* Schedule Section */
-        .schedule {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 0 50px;
-        }
-
-        .schedule button {
-            background-color: #3498db;
+        .button-approve, .button-reject {
+            background-color: green;
+            color: white;
+            padding: 8px 12px;
             border: none;
-            padding: 15px 30px;
-            color: white;
-            font-size: 1rem;
             border-radius: 5px;
             cursor: pointer;
+            margin-right: 5px;
+        }
+
+        .button-reject {
+            background-color: red;
+        }
+
+        /* Early Warning System Styling */
+        .alert-section {
+            background-color: #FFFACD;
+            padding: 20px;
+            border-radius: 10px;
             margin-bottom: 20px;
         }
 
-        .schedule button:hover {
+        .alert-section h2 {
+            color: #FF0000;
+            margin-bottom: 20px;
+        }
+
+        /* New Row for teacher tools */
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .column {
+            flex: 1;
+            margin: 10px;
+            min-width: 200px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .column h3 {
+            background-color: #3498db;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .column-content {
+            padding: 20px;
+            background-color: white;
+        }
+
+        .button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .button:hover {
             background-color: #2980b9;
         }
 
-        /* Performance Section */
-        .performance {
-            display: flex;
-            justify-content: space-around;
-            margin: 50px 50px;
+        /* Modal styles */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4); 
+            padding-top: 60px;
         }
 
-        .chart-container {
-            background-color: #fff;
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto; 
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            width: 45%;
+            border: 1px solid #888;
+            width: 80%; 
         }
 
-        /* Footer */
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 20px;
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .performance {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .chart-container {
-                width: 80%;
-                margin-bottom: 20px;
-            }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-
-    <!-- Header -->
     <header>
-        <h1>Teacher Dashboard</h1>
+        <h1>Teacher's Dashboard</h1>
     </header>
 
-    <!-- Dropout Management Section -->
-    <section class="dropout-management">
-        <h2>Student Dropout Management</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Percentage</th>
-                    <th>Attendance</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Example Data -->
-                <tr>
-                    <td>John Doe</td>
-                    <td>45%</td>
-                    <td>60%</td>
-                    <td><button onclick="alert('Reviewing John Doe')">Review</button></td>
-                </tr>
-                <tr>
-                    <td>Jane Smith</td>
-                    <td>50%</td>
-                    <td>65%</td>
-                    <td><button onclick="alert('Reviewing Jane Smith')">Review</button></td>
-                </tr>
-                <!-- Add more rows as needed -->
-            </tbody>
-        </table>
-    </section>
-
-    <!-- Schedule Section -->
-    <section class="schedule">
-        <h2>Schedule Online Lectures</h2>
-        <button onclick="alert('Scheduling lecture for 7 to 8 pm')">7 to 8 pm</button>
-        <button onclick="alert('Scheduling lecture for 10 to 11 pm')">10 to 11 pm</button>
-        <!-- Add more buttons if needed -->
-    </section>
-
-    <!-- Performance Section -->
-    <section class="performance">
-        <div class="chart-container">
-            <h2>Student Results - Graph</h2>
-            <!-- Example Graph - You can integrate a library like Chart.js for actual data visualization -->
-            <img src="https://via.placeholder.com/400x300" alt="Student Results Graph" style="width: 100%; height: auto;">
+    <div class="container">
+        <!-- Early Warning System Section -->
+        <div class="box alert-section" id="early-warning">
+            <h2>Early Warning: Students at Risk of Dropout</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Marks Percentage</th>
+                        <th>Attendance</th>
+                        <th>Grades</th>
+                        <th>Behavior</th>
+                        <th>Activeness</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 5 Students Data -->
+                    <tr>
+                        <td>Jane Doe</td>
+                        <td>45%</td>
+                        <td>65%</td>
+                        <td>C</td>
+                        <td>Needs Improvement</td>
+                        <td>Low</td>
+                    </tr>
+                    <tr>
+                        <td>John Smith</td>
+                        <td>50%</td>
+                        <td>70%</td>
+                        <td>C+</td>
+                        <td>Satisfactory</td>
+                        <td>Moderate</td>
+                    </tr>
+                    <tr>
+                        <td>Alice Johnson</td>
+                        <td>40%</td>
+                        <td>60%</td>
+                        <td>D</td>
+                        <td>Needs Attention</td>
+                        <td>Low</td>
+                    </tr>
+                    <tr>
+                        <td>Mark Davis</td>
+                        <td>55%</td>
+                        <td>80%</td>
+                        <td>B</td>
+                        <td>Good</td>
+                        <td>Moderate</td>
+                    </tr>
+                    <tr>
+                        <td>Emily Brown</td>
+                        <td>48%</td>
+                        <td>68%</td>
+                        <td>C-</td>
+                        <td>Needs Improvement</td>
+                        <td>Low</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <div class="chart-container">
-            <h2>Student Results - Circular </h2>
-            <!-- Example Circular  -->
-            <img src="https://via.placeholder.com/400x300" alt="Student Results Circular Graph" style="width: 100%; height: auto;">
+
+        <!-- New Row: Online Class Scheduling, Notes, Recordings, Query Sessions -->
+        <div class="row">
+            <div class="column">
+                <div class="column-content">
+                    <h3>Schedule Online Classes</h3>
+                    <p>Schedule upcoming live classes for students.</p>
+                    <button class="button" id="openScheduleClassModal">Schedule Now</button>
+                </div>
+            </div>
+            <div class="column">
+                <div class="column-content">
+                    <h3>Provide Notes</h3>
+                    <p>Upload and share lecture notes and study materials with students.</p>
+                    <button class="button" id="openUploadNotesModal">Upload Notes</button>
+                </div>
+            </div>
+            <div class="column">
+                <div class="column-content">
+                    <h3>Upload Recordings</h3>
+                    <p>Share recorded lectures for students to review.</p>
+                    <button class="button" id="openUploadRecordingsModal">Upload Recording</button>
+                </div>
+            </div>
+            <div class="column">
+                <div class="column-content">
+                    <h3>Query Sessions</h3>
+                    <p>Schedule and manage query resolution sessions.</p>
+                    <button class="button" id="openScheduleQueryModal">Schedule Session</button>
+                </div>
+            </div>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 Teacher Dashboard</p>
-    </footer>
+        <!-- Performance and AI Insights Containers -->
+        <div class="box" id="student-data">
+            <h2>Student Performance</h2>
+            <canvas id="gradesChart"></canvas>
+        </div>
 
+        <div class="box" id="overall-performance">
+            <h2>Overall Performance</h2>
+            <canvas id="overallPerformanceChart"></canvas>
+        </div>
+
+        <div class="box" id="ai-insights">
+            <h2>Focus Areas for Improvement</h2>
+            <canvas id="improvementAreasChart"></canvas>
+        </div>
+
+    </div>
+
+    <!-- Modals -->
+    <div id="scheduleClassModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeScheduleClassModal">&times;</span>
+            <h2>Schedule Online Class</h2>
+            <p>Details for scheduling the class...</p>
+            <button class="button">Confirm Schedule</button>
+        </div>
+    </div>
+
+    <div id="uploadNotesModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeUploadNotesModal">&times;</span>
+            <h2>Upload Notes</h2>
+            <p>Upload your lecture notes here...</p>
+            <input type="file" accept=".pdf,.doc,.docx" />
+            <button class="button">Upload</button>
+        </div>
+    </div>
+
+    <div id="uploadRecordingsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeUploadRecordingsModal">&times;</span>
+            <h2>Upload Recordings</h2>
+            <p>Upload your recorded lectures here...</p>
+            <input type="file" accept=".mp4,.mkv" />
+            <button class="button">Upload</button>
+        </div>
+    </div>
+
+    <div id="scheduleQueryModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeScheduleQueryModal">&times;</span>
+            <h2>Schedule Query Session</h2>
+            <p>Details for scheduling query sessions...</p>
+            <button class="button">Confirm Schedule</button>
+        </div>
+    </div>
+
+    <script>
+        // Get modal elements
+        const scheduleClassModal = document.getElementById("scheduleClassModal");
+        const uploadNotesModal = document.getElementById("uploadNotesModal");
+        const uploadRecordingsModal = document.getElementById("uploadRecordingsModal");
+        const scheduleQueryModal = document.getElementById("scheduleQueryModal");
+
+        // Get buttons that open the modals
+        document.getElementById("openScheduleClassModal").onclick = function() {
+            scheduleClassModal.style.display = "block";
+        };
+        document.getElementById("openUploadNotesModal").onclick = function() {
+            uploadNotesModal.style.display = "block";
+        };
+        document.getElementById("openUploadRecordingsModal").onclick = function() {
+            uploadRecordingsModal.style.display = "block";
+        };
+        document.getElementById("openScheduleQueryModal").onclick = function() {
+            scheduleQueryModal.style.display = "block";
+        };
+
+        // Get the <span> elements that close the modals
+        document.getElementById("closeScheduleClassModal").onclick = function() {
+            scheduleClassModal.style.display = "none";
+        };
+        document.getElementById("closeUploadNotesModal").onclick = function() {
+            uploadNotesModal.style.display = "none";
+        };
+        document.getElementById("closeUploadRecordingsModal").onclick = function() {
+            uploadRecordingsModal.style.display = "none";
+        };
+        document.getElementById("closeScheduleQueryModal").onclick = function() {
+            scheduleQueryModal.style.display = "none";
+        };
+
+        // Close the modals if the user clicks anywhere outside of the modal
+        window.onclick = function(event) {
+            if (event.target === scheduleClassModal) {
+                scheduleClassModal.style.display = "none";
+            } else if (event.target === uploadNotesModal) {
+                uploadNotesModal.style.display = "none";
+            } else if (event.target === uploadRecordingsModal) {
+                uploadRecordingsModal.style.display = "none";
+            } else if (event.target === scheduleQueryModal) {
+                scheduleQueryModal.style.display = "none";
+            }
+        };
+
+        // Chart.js scripts for rendering charts
+        const ctxGrades = document.getElementById('gradesChart').getContext('2d');
+        const gradesChart = new Chart(ctxGrades, {
+            type: 'bar',
+            data: {
+                labels: ['Jane', 'John', 'Alice', 'Mark', 'Emily'],
+                datasets: [{
+                    label: 'Grades Percentage',
+                    data: [45, 50, 40, 55, 48],
+                    backgroundColor: 'rgba(52, 152, 219, 0.6)',
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Example for other charts
+        const ctxOverall = document.getElementById('overallPerformanceChart').getContext('2d');
+        const overallPerformanceChart = new Chart(ctxOverall, {
+            type: 'pie',
+            data: {
+                labels: ['Passed', 'Failed', 'At Risk'],
+                datasets: [{
+                    data: [10, 5, 3],
+                    backgroundColor: ['#2ecc71', '#e74c3c', '#f1c40f'],
+                }]
+            }
+        });
+
+        const ctxImprovement = document.getElementById('improvementAreasChart').getContext('2d');
+        const improvementAreasChart = new Chart(ctxImprovement, {
+            type: 'doughnut',
+            data: {
+                labels: ['Math', 'Science', 'English', 'Social Studies'],
+                datasets: [{
+                    data: [30, 15, 45, 10],
+                    backgroundColor: ['#3498db', '#e67e22', '#9b59b6', '#34495e'],
+                }]
+            }
+        });
+    </script>
 </body>
 </html>
